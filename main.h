@@ -10,4 +10,7 @@
 /* Project functions' prototypes */
 int _putchar(char c);
 
+/* Project's entry*/
+int _printf(const char *format, ...);
+
 #endif /* MAIN_H */
