@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			case 'c':
 				/* code */
 				break;
-				case 'd':
+			case 'd':
 				/* code*/
 				break;
 
