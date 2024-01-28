@@ -7,6 +7,19 @@
 #include <stdarg.h>
 #include <limits.h>
 
+
+/**
+ * struct specifier - for correct mapping of specifiers to arguments
+ *
+ * @ch: format specifier
+ * @print_type: The function for specifier, i.e int, char etc
+ */
+typedef struct specifier
+{
+	char ch;
+	void (*print_type)(va_list arg);
+}specifier_t;
+
 /* Project functions' prototypes */
 int _putchar(char c);
 void print_char(va_list arg);
