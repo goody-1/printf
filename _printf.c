@@ -6,33 +6,35 @@
 */
 int _printf(const char *format, ...)
 {
-    /*variable initialisation*/
-    int letter = 0;
-    va_list args;
-    va_start(args, format);
+	/*variable initialisation*/
+	int letter = 0;
+	va_list args;
+	va_start(args, format);
     
-    /*identify the format and */
-    /*match to appropriate funtion*/
-    while ( letter != '\0')
-    {
-        if ( letter = "%")
-        {
-            letter++;
+	/*identify the format and */
+	/*match to appropriate funtion*/
+	while (format[letter] != '\0')
+	{
+		if (format[letter] == "%")
+		{
+			letter++;
 
-            switch (args[letter])
-            {
-            case "c":
-                /* code */
-                break;
-            case "d":
-                break;
-            
-            default:
-                break;
-            }
-        }
-    }
+			/*this switchcase is meant to call functions*/
+			/*that match to the format specifier*/
+			switch (format[letter])
+			{
+			case 'c':
+				/* code */
+				break;
+				case 'd':
+				/* code*/
+				break;
 
-    char argsList = va_arg(args, format);
-    va_end(args)
+			default:
+				break;
+			}
+		}
+	}
+
+	va_end(args);
 }
