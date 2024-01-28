@@ -1,38 +1,47 @@
 #include "main.h"
 
 /**
- *_print - prints the user args
- * @format: the arg passed into _printf
+ *_printf - prints the input string
+ * @format: the string argument passed into _printf
+ *
+ * Return: the number of characters printed
 */
 int _printf(const char *format, ...)
 {
-    /*variable initialisation*/
-    int letter = 0;
-    va_list args;
-    va_start(args, format);
-    
-    /*identify the format and */
-    /*match to appropriate funtion*/
-    while ( letter != '\0')
-    {
-        if ( letter = "%")
-        {
-            letter++;
+	/*variable initialisation*/
+	int num_of_char = 0, i = 0, j;
+	specifier_t specifiers[] = {
+		{'c', print_char},
+		{'s', print_string},
+		{'%', print_char},
+	};
+	va_list args;
 
-            switch (args[letter])
-            {
-            case "c":
-                /* code */
-                break;
-            case "d":
-                break;
-            
-            default:
-                break;
-            }
-        }
-    }
+	va_start(args, format);
 
-    char argsList = va_arg(args, format);
-    va_end(args)
+	/*identify the format and */
+	/*match to appropriate funtion*/
+	while (format[i] != '\0')
+	{
+		if (format[i] != '%')
+		{
+			_putchar(format[i]);
+			num_of_char++;
+		}
+		j = 0;
+		while (specifiers[j].ch)
+		{
+			if (format[i] == '%' && format[i + 1] == specifiers[j].ch)
+			{
+				specifiers[j].print_type(args);
+				num_of_char++;
+				i++;
+			}
+			j++;
+		}
+		i++;
+	}
+	va_end(args);
+
+	return (num_of_char);
 }
