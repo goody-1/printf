@@ -13,7 +13,6 @@ int _printf(const char *format, ...)
 	specifier_t specifiers[] = {
 		{'c', print_char},
 		{'s', print_string},
-		{'%', print_char},
 	};
 	va_list args;
 
@@ -34,6 +33,12 @@ int _printf(const char *format, ...)
 			if (format[i] == '%' && format[i + 1] == specifiers[j].ch)
 			{
 				specifiers[j].print_type(args);
+				num_of_char++;
+				i++;
+			}
+			else if (format[i] == '%' && format[i + 1] == '%')
+			{
+				_putchar('%');
 				num_of_char++;
 				i++;
 			}
