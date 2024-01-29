@@ -9,7 +9,7 @@
 int _printf(const char *format, ...)
 {
 	/*variable initialisation*/
-	int num_of_char = 0, i = 0, j, len;
+	int num_of_char = 0, i = 0;
 	specifier_t specifiers[] = {
 		{'c', print_char},
 		{'s', print_string},
@@ -29,28 +29,49 @@ int _printf(const char *format, ...)
 			_putchar(format[i]);
 			num_of_char++;
 		}
-		j = 0;
-		while (specifiers[j].ch)
+		else
 		{
-			if (format[i] == '%' && format[i + 1] == specifiers[j].ch)
-			{
-				len = specifiers[j].print_type(args);
-				num_of_char += len;
-				i++;
-				break;
-			}
-			else if (format[i] == '%' && format[i + 1] == '%')
-			{
-				_putchar('%');
-				num_of_char++;
-				i++;
-				break;
-			}
-			j++;
+			num_of_char += process_specifiers(format, args, &i, specifiers);
 		}
 		i++;
 	}
 	va_end(args);
 
+	return (num_of_char);
+}
+/**
+ * process_specifiers - processes specifier with argument
+ * @format: the string argument passed into _printf
+ * @specifiers: an array of the specifier_t type
+ * @i: pointer address of counter i from printf
+ * @args: the variadic arg
+ *
+ * Return: number of characters
+*/
+int process_specifiers(const char *format, va_list args, int *i,
+	specifier_t specifiers[])
+{
+	int num_of_char = 0;
+	int j = 0;
+	int len;
+
+	while (specifiers[j].ch)
+	{
+		if (format[*i] == '%' && format[*i + 1] == specifiers[j].ch)
+		{
+			len = specifiers[j].print_type(args);
+			num_of_char += len;
+			(*i)++;
+			break;
+		}
+		else if (format[*i] == '%' && format[*i + 1] == '%')
+		{
+			_putchar('%');
+			num_of_char++;
+			(*i)++;
+			break;
+		}
+		j++;
+	}
 	return (num_of_char);
 }
