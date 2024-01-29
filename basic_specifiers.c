@@ -19,6 +19,8 @@ int print_char(va_list arg)
  * print_string - Prints a string.
  * @arg: A list of arguments pointing to
  *       the string to be printed.
+ *
+ * Return: length of argument
  */
 int print_string(va_list arg)
 {
@@ -43,7 +45,9 @@ int print_string(va_list arg)
 /**
  * print_int - Prints an int.
  * @arg: A list of arguments pointing to
- *       the integer to be printed.
+ *       the integer to be printed
+ *
+ * Return: length of argument
  */
 int print_int(va_list arg)
 {

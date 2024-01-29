@@ -44,25 +44,25 @@ void print_number(int n)
 
 /**
 * get_int_length - get length of an integer
-* @nun: integer in question
+* @num: integer in question
+*
 * Return: length of integer
 */
 int get_int_length(int num)
 {
 	int length = 0;
 
-	if (num == 0) {
-		return 1;
-	}
+	if (num == 0)
+		return (1);
 
-	if (num < 0) {
+	if (num < 0)
 		num = -num;
-	}
 
-	while (num != 0) {
+	while (num != 0)
+	{
 		num /= 10;
 		length++;
 	}
 
-	return length;
+	return (length);
 }
