@@ -18,7 +18,7 @@ typedef struct specifier
 {
 	char ch;
 	int (*print_type)(va_list arg);
-}specifier_t;
+} specifier_t;
 
 /* Project functions' prototypes */
 int _putchar(char c);
