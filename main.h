@@ -33,5 +33,8 @@ int _printf(const char *format, ...);
 unsigned int str_len(char *str);
 void print_number(int n);
 int get_int_length(int num);
+int process_specifiers(const char *format, va_list args, int *i,
+	specifier_t specifiers[]);
+char *_strcpy(char *dest, char *src);
 
 #endif /* MAIN_H */
