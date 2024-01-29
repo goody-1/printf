@@ -17,18 +17,21 @@
 typedef struct specifier
 {
 	char ch;
-	void (*print_type)(va_list arg);
+	int (*print_type)(va_list arg);
 }specifier_t;
 
 /* Project functions' prototypes */
 int _putchar(char c);
-void print_char(va_list arg);
-void print_string(va_list arg);
+int print_char(va_list arg);
+int print_string(va_list arg);
+int print_int(va_list arg);
 
 /* Project's entry*/
 int _printf(const char *format, ...);
 
 /* Helper functions */
 unsigned int str_len(char *str);
+void print_number(int n);
+int get_int_length(int num);
 
 #endif /* MAIN_H */

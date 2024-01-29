@@ -12,10 +12,12 @@
 int _printf(const char *format, ...)
 {
 	/*variable initialisation*/
-	int num_of_char = 0, i = 0, j;
+	int num_of_char = 0, i = 0, j, len;
 	specifier_t specifiers[] = {
 		{'c', print_char},
 		{'s', print_string},
+		{'d', print_int},
+		{'i',  print_int},
 	};
 	va_list args;
 
@@ -35,15 +37,17 @@ int _printf(const char *format, ...)
 		{
 			if (format[i] == '%' && format[i + 1] == specifiers[j].ch)
 			{
-				specifiers[j].print_type(args);
-				num_of_char++;
+				len = specifiers[j].print_type(args);
+				num_of_char += len;
 				i++;
+				break;
 			}
 			else if (format[i] == '%' && format[i + 1] == '%')
 			{
 				_putchar('%');
 				num_of_char++;
 				i++;
+				break;
 			}
 			j++;
 		}
