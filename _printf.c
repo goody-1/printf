@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 		{'o',  print_otal},
 		{'x',  print_hex},
 		{'X',  print_hex_upper},
+		{'p',  print_pointer},
 	};
 	va_list args;
 

@@ -128,3 +128,37 @@ int print_hex_upper(va_list arg)
 
 	return (length);
 }
+/**
+ * print_pointer - prints pointer .
+ * @arg: the int argument
+ *
+ * Return: length of string printed
+ */
+int print_pointer(va_list arg)
+{
+	void *ptr = va_arg(arg, void *);
+	unsigned long address = (unsigned long)ptr;
+	int length, i, digit, msb_index;
+	char *hex_digits;
+
+	/* Print the pointer address in hexadecimal */
+	_putchar('0');
+	_putchar('x');
+
+	/* Determine the most significant non-zero digit */
+	msb_index = sizeof(void *) * 2 - 1;
+	while (((address >> (msb_index * 4)) & 0xF) == 0 && msb_index > 0)
+        msb_index--;
+
+	/* Print each hexadecimal digit individually */
+	length = 2;  /* Length of "0x" */
+	hex_digits = "0123456789abcdef";
+	for (i = msb_index; i >= 0; i--)
+	{
+		digit = (address >> (i * 4)) & 0xF;
+		_putchar(hex_digits[digit]);
+		length++;
+	}
+
+	return (length);
+}

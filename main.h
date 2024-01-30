@@ -30,6 +30,7 @@ int print_otal(va_list arg);
 int print_hex(va_list arg);
 int print_hex_upper(va_list arg);
 int print_unsigned(va_list arg);
+int print_pointer(va_list arg);
 
 /* Project's entry*/
 int _printf(const char *format, ...);
