@@ -84,6 +84,10 @@ int print_binary(va_list arg)
 		length++;
 		mask >>= 1;
 	}
-
+	/* If the number was zero, print a single '0' */
+	if (length == 0) {
+		putchar('0');
+		length = 1;
+	}
 	return (length);
 }
