@@ -92,3 +92,45 @@ int print_binary(va_list arg)
 	}
 	return (length);
 }
+/**
+ * print_unsigned - prints unsigned integer.
+ * @arg: the integer argument
+ *
+ * Return: length of string printed
+ */
+
+int print_unsigned(va_list arg)
+{
+	unsigned int num = va_arg(arg, unsigned int);
+	unsigned int length = 0, index = 0, temp;
+	char *buffer;
+
+	/* Special case: print '0' for zero */
+	if (num == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
+
+	temp = num;
+	/* Count the number of characters printed */
+	while (temp != 0)
+	{
+		temp /= 16;
+		length++;
+	}
+
+	buffer = malloc(sizeof(unsigned int) * length);
+	temp = num;
+	while (temp != 0)
+	{
+		buffer[index++] = temp % 10 + '0';
+		temp /= 10;
+	}
+
+	while (index > 0)
+		putchar(buffer[--index]);
+
+	free(buffer);
+	return (length);
+}
