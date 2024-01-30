@@ -26,6 +26,10 @@ int print_char(va_list arg);
 int print_string(va_list arg);
 int print_int(va_list arg);
 int print_binary(va_list args);
+int print_otal(va_list arg);
+int print_hex(va_list arg);
+int print_hex_upper(va_list arg);
+int print_unsigned(va_list arg);
 
 /* Project's entry*/
 int _printf(const char *format, ...);
