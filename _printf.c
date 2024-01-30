@@ -15,6 +15,7 @@ int _printf(const char *format, ...)
 		{'s', print_string},
 		{'d', print_int},
 		{'i',  print_int},
+		{'b',  print_binary},
 	};
 	va_list args;
 
@@ -52,8 +53,7 @@ int process_specifiers(const char *format, va_list args, int *i,
 	specifier_t specifiers[])
 {
 	int num_of_char = 0;
-	int j = 0;
-	int len;
+	int j = 0, len;
 
 	while (specifiers[j].ch)
 	{
