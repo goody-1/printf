@@ -60,3 +60,30 @@ int print_int(va_list arg)
 
 	return (get_int_length(num));
 }
+/**
+ * print_binary - converts an int to binary and prints it.
+ * @arg: A list of arguments
+ *
+ *
+ * Return: length of string to be printed
+ */
+int print_binary(va_list arg)
+{
+	int num = va_arg(arg, int);
+	int length = 0;
+	unsigned int mask = 1 << (sizeof(int) * 8 - 1);
+
+	/* Skip leading zeros */
+	while ((mask & num) == 0 && mask != 0)
+		mask >>= 1;
+
+	/* Print the remaining binary digits */
+	while (mask != 0)
+	{
+		_putchar((num & mask) ? '1' : '0');
+		length++;
+		mask >>= 1;
+	}
+
+	return (length);
+}
