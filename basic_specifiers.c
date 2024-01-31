@@ -26,10 +26,20 @@ int print_char(va_list arg)
  */
 int print_string(va_list arg)
 {
-	char *str;
-	int i = 0;
+	char *str, *null = "(null)";
+	int i = 0, j = 0;
 
 	str = va_arg(arg, char *);
+
+	if (!str)
+	{
+		while (null[j] != '\0')
+		{
+			_putchar(null[j]);
+			j++;
+		}
+		return (j);
+	}
 
 	if (str)
 	{
