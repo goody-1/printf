@@ -148,7 +148,7 @@ int print_pointer(va_list arg)
 	/* Determine the most significant non-zero digit */
 	msb_index = sizeof(void *) * 2 - 1;
 	while (((address >> (msb_index * 4)) & 0xF) == 0 && msb_index > 0)
-        msb_index--;
+		msb_index--;
 
 	/* Print each hexadecimal digit individually */
 	length = 2;  /* Length of "0x" */
