@@ -41,6 +41,8 @@ void print_number(int n);
 int get_int_length(int num);
 int process_specifiers(const char *format, va_list args, int *i,
 	specifier_t specifiers[]);
+int check_valid_identifier(const char *format, int *counter, int *num_of_char,
+	specifier_t *specifiers, int specifier_size);
 char *_strcpy(char *dest, char *src);
 
 #endif /* MAIN_H */
