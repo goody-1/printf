@@ -40,6 +40,8 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
+			if (!format[i + 1] || format[i + 1] == ' ')
+				return (-1);
 			num_of_char += process_specifiers(format, args, &i, specifiers);
 		}
 		i++;
