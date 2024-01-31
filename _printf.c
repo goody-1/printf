@@ -24,6 +24,9 @@ int _printf(const char *format, ...)
 	};
 	va_list args;
 
+	if (!format)
+		return (0);
+
 	va_start(args, format);
 
 	/*identify the format and */
