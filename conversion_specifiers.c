@@ -138,8 +138,19 @@ int print_pointer(va_list arg)
 {
 	void *ptr = va_arg(arg, void *);
 	unsigned long address = (unsigned long)ptr;
-	int length, i, digit, msb_index;
-	char *hex_digits;
+	int length, i, digit, msb_index, j = 0;
+	char *hex_digits, *null = "(nil)";
+
+	if (!ptr)
+	{
+		while (null[j] != '\0')
+		{
+			_putchar(null[j]);
+			j++;
+		}
+		return (j);
+	}
+
 
 	/* Print the pointer address in hexadecimal */
 	_putchar('0');
