@@ -56,7 +56,10 @@ int get_int_length(int num)
 		return (1);
 
 	if (num < 0)
+	{
 		num = -num;
+		length++;
+	}
 
 	while (num != 0)
 	{
